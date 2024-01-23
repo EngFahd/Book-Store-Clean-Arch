@@ -1,0 +1,35 @@
+clean Arch 
+
+1- Domain Layer > bussnis logic
+ 2- book intites => book model presntaion
+ 3- repos => abstract class respons > futures book intites 
+        > and create methode without implement
+=======================
+4 - install dartZ => accept tow return > L and R
+            > l is Falur class whitch i create in core folder
+            > R is lidt of bok intites
+===================
+5- Design UseCase in paper , at the most every function in repo neded UseCase
+
+6- reate folder usecases {
+class FeatchFeatureBooksUseCase {
+  final HomeRepo homeRepo;
+
+  FeatchFeatureBooksUseCase(this.homeRepo);
+
+  Future<Either<Failure, List<BookEntity>>> featchFeatureBooks() {
+    //  ممكن اكتب كود بس انا مش محتاج علشان مش محتاج
+    return homeRepo.featchFeatureBooks();
+  }
+}
+}
+============
+7 - install (Json to Dart Model) in my extenion VS
+      =>ctrl + p > Json to Dart from ClipBord
+        => nameclass 
+        => qualtiy opratoe > no
+        => immutable > no
+        => all inter all no
+================
+8- respons model into intites
+        =>book model extends book BookEntity
