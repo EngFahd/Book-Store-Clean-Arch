@@ -1,6 +1,6 @@
 import 'package:book_store/core/utils/api_service.dart';
 import 'package:book_store/features/home/data/model/book_model/item.dart';
-import 'package:book_store/features/home/domain/entities/book-entities.dart';
+import 'package:book_store/features/home/domain/entities/book_entities.dart';
 
 abstract class HomeRemoteDataSource {
   Future<List<BookEntity>> featchFeatureBooks();

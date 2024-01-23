@@ -1,4 +1,4 @@
-import 'package:book_store/features/home/domain/entities/book-entities.dart';
+import 'package:book_store/features/home/domain/entities/book_entities.dart';
 
 import 'access_info.dart';
 import 'sale_info.dart';

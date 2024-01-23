@@ -1,5 +1,5 @@
 import 'package:book_store/core/errors/failler.dart';
-import 'package:book_store/features/home/domain/entities/book-entities.dart';
+import 'package:book_store/features/home/domain/entities/book_entities.dart';
 import 'package:book_store/features/home/domain/repo/home-repo.dart';
 import 'package:dartz/dartz.dart';
 
