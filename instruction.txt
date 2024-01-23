@@ -38,3 +38,5 @@ class FeatchFeatureBooksUseCase {
 
 10 - create remote HomeRemoteDataSource and implement
         =>in local add hive and hive_flutter and hive_generator and build_runner
+        =>   Hive.registerAdapter(BookEntityAdapter());
+              await Hive.openBox(kFeaturesBox);

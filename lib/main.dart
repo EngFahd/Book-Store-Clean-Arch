@@ -1,17 +1,20 @@
 import 'package:book_store/constanceApp.dart';
+import 'package:book_store/features/home/domain/entities/book_entities.dart';
 import 'package:book_store/features/home/presentaion/views/book-Detils-viwe.dart';
 import 'package:book_store/features/home/presentaion/views/home.dart';
 import 'package:book_store/features/home/presentaion/views/widgets/book-Detiles-body.dart';
 import 'package:book_store/features/search-viwe/presentaion/views/Search-view.dart';
 import 'package:book_store/features/spashview/presntation/views/splashviwe.dart';
-import 'package:book_store/features/spashview/presntation/views/widgets/splashViweBody.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:hive/hive.dart';
 // import 'package:go_router/go_router.dart';
 
-void main() {
+void main() async {
   runApp(const BookApp());
+  Hive.registerAdapter(BookEntityAdapter());
+ await Hive.openBox(kFeaturesBox);
 }
 
 class BookApp extends StatelessWidget {
