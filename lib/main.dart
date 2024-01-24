@@ -10,10 +10,11 @@ import 'package:hive_flutter/adapters.dart';
 // import 'package:go_router/go_router.dart';
 
 void main() async {
-  runApp(const BookApp());
   await Hive.initFlutter();
   Hive.registerAdapter(BookEntityAdapter());
   await Hive.openBox(kFeaturesBox);
+  await Hive.openBox(kNewestBox);
+  runApp(const BookApp());
 }
 
 class BookApp extends StatelessWidget {
