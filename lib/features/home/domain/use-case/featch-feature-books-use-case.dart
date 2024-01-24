@@ -1,6 +1,6 @@
 import 'package:book_store/core/errors/failler.dart';
 import 'package:book_store/features/home/domain/entities/book_entities.dart';
-import 'package:book_store/features/home/domain/repo/home-repo.dart';
+import 'package:book_store/features/home/domain/repo/home_repo.dart';
 import 'package:dartz/dartz.dart';
 
 import '../../../../core/use_case/no_paramter_use_case.dart';

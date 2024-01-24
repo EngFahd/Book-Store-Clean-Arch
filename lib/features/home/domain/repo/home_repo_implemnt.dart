@@ -2,7 +2,7 @@ import 'package:book_store/core/errors/failler.dart';
 import 'package:book_store/features/home/data/data%20source/home_local_data_source.dart';
 import 'package:book_store/features/home/data/data%20source/home_remote_data_source.dart';
 import 'package:book_store/features/home/domain/entities/book_entities.dart';
-import 'package:book_store/features/home/domain/repo/home-repo.dart';
+import 'package:book_store/features/home/domain/repo/home_repo.dart';
 import 'package:dartz/dartz.dart';
 
 class HomeRepoImplemnt extends HomeRepo {
@@ -14,13 +14,14 @@ class HomeRepoImplemnt extends HomeRepo {
 
   @override
   Future<Either<Failure, List<BookEntity>>> featchFeatureBooks() async {
-    var listBox = homeLocalDataSource.featchFeatureBooks();
-    if (listBox.isNotEmpty) {
-      return right(listBox);
-    }
     try {
-      var booxs = await homeRemoteDataSource.featchFeatureBooks();
-      return right(booxs);
+      List<BookEntity> books;
+      books = homeLocalDataSource.featchFeatureBooks();
+      if (books.isNotEmpty) {
+        return right(books);
+      }
+      books = await homeRemoteDataSource.featchFeatureBooks();
+      return right(books);
     } catch (e) {
       return left(ServerFailure(e.toString()));
     }
@@ -28,13 +29,14 @@ class HomeRepoImplemnt extends HomeRepo {
 
   @override
   Future<Either<Failure, List<BookEntity>>> featchNewsteBooks() async {
-    var listBox = homeLocalDataSource.fearchNewetBooks();
-    if (listBox.isNotEmpty) {
-      return right(listBox);
-    }
     try {
-      var booxs = await homeRemoteDataSource.featchNewsteBooks();
-      return right(booxs);
+      List<BookEntity> books;
+      books = homeLocalDataSource.fearchNewetBooks();
+      if (books.isNotEmpty) {
+        return right(books);
+      }
+      books = await homeRemoteDataSource.featchNewsteBooks();
+      return right(books);
     } catch (e) {
       return left(ServerFailure(e.toString()));
     }
