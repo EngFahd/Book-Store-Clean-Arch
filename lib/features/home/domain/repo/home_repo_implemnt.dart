@@ -4,6 +4,7 @@ import 'package:book_store/features/home/data/data%20source/home_remote_data_sou
 import 'package:book_store/features/home/domain/entities/book_entities.dart';
 import 'package:book_store/features/home/domain/repo/home_repo.dart';
 import 'package:dartz/dartz.dart';
+import 'package:dio/dio.dart';
 
 class HomeRepoImplemnt extends HomeRepo {
   final HomeRemoteDataSource homeRemoteDataSource;
@@ -23,6 +24,9 @@ class HomeRepoImplemnt extends HomeRepo {
       books = await homeRemoteDataSource.featchFeatureBooks();
       return right(books);
     } catch (e) {
+      if (e is DioException) {
+        return left(ServerFailure.fromDioError(e));
+      }
       return left(ServerFailure(e.toString()));
     }
   }
@@ -38,6 +42,9 @@ class HomeRepoImplemnt extends HomeRepo {
       books = await homeRemoteDataSource.featchNewsteBooks();
       return right(books);
     } catch (e) {
+      if (e is DioException) {
+        return left(ServerFailure.fromDioError(e));
+      }
       return left(ServerFailure(e.toString()));
     }
   }
