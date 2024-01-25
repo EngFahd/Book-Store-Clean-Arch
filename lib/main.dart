@@ -2,7 +2,7 @@ import 'package:book_store/constanceApp.dart';
 import 'package:book_store/core/functions/setup_service_locator.dart';
 import 'package:book_store/features/home/domain/entities/book_entities.dart';
 import 'package:book_store/features/home/domain/repo/home_repo_implemnt.dart';
-import 'package:book_store/features/home/domain/use-case/featch-feature-books-use-case.dart';
+import 'package:book_store/features/home/domain/use-case/featch_feature_books_use_case.dart';
 import 'package:book_store/features/home/presentaion/manger/featured_box_cubite/featured_box_cubit.dart';
 import 'package:book_store/features/home/presentaion/views/book-Detils-viwe.dart';
 import 'package:book_store/features/search-viwe/presentaion/views/Search-view.dart';
