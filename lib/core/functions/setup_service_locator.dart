@@ -6,7 +6,7 @@ import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 
 var getIt = GetIt.instance;
-void getItHomeImplemnt() {
+void setupServiceAloocator() {
   getIt.registerSingleton<ApiService>(
     ApiService(
       Dio(),
@@ -15,7 +15,7 @@ void getItHomeImplemnt() {
   getIt.registerSingleton<HomeRepoImplemnt>(
     HomeRepoImplemnt(
       homeRemoteDataSource: HomeRemoteDataSourceImpl(
-        getIt.get<ApiService>(),
+       ApiService(Dio())
       ),
       homeLocalDataSource: HomeLocalDataSourceImpl(),
     ),

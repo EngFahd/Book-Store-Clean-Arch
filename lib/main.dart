@@ -1,5 +1,9 @@
 import 'package:book_store/constanceApp.dart';
 import 'package:book_store/core/functions/setup_service_locator.dart';
+import 'package:book_store/core/utils/api_service.dart';
+import 'package:book_store/core/utils/simple_bloc_opserver.dart';
+import 'package:book_store/features/home/data/data%20source/home_local_data_source.dart';
+import 'package:book_store/features/home/data/data%20source/home_remote_data_source.dart';
 import 'package:book_store/features/home/domain/entities/book_entities.dart';
 import 'package:book_store/features/home/domain/repo/home_repo_implemnt.dart';
 import 'package:book_store/features/home/domain/use-case/featch_feature_books_use_case.dart';
@@ -7,6 +11,7 @@ import 'package:book_store/features/home/presentaion/manger/featured_box_cubite/
 import 'package:book_store/features/home/presentaion/views/book-Detils-viwe.dart';
 import 'package:book_store/features/search-viwe/presentaion/views/Search-view.dart';
 import 'package:book_store/features/spashview/presntation/views/splashviwe.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
@@ -17,8 +22,9 @@ import 'package:hive_flutter/adapters.dart';
 void main() async {
   await Hive.initFlutter();
   Hive.registerAdapter(BookEntityAdapter());
-  await Hive.openBox(kFeaturesBox);
-  await Hive.openBox(kNewestBox);
+  await Hive.openBox<BookEntity>(kFeaturesBox);
+  await Hive.openBox<BookEntity>(kNewestBox);
+  Bloc.observer = SimpleBlocOperver();
   runApp(const BookApp());
 }
 
@@ -31,10 +37,11 @@ class BookApp extends StatelessWidget {
       providers: [
         BlocProvider(
           create: (context) => FeaturedBoxCubit(
-            FeatchFeatureBooksUseCase(
-              getIt<HomeRepoImplemnt>(),
-            ),
-          ),
+            FeatchFeatureBooksUseCase(HomeRepoImplemnt(
+                homeLocalDataSource: HomeLocalDataSourceImpl(),
+                homeRemoteDataSource:
+                    HomeRemoteDataSourceImpl(ApiService(Dio())))),
+          )..featchFeatsherdBox(),
         )
       ],
       child: GetMaterialApp(
@@ -53,4 +60,3 @@ class BookApp extends StatelessWidget {
     );
   }
 }
-

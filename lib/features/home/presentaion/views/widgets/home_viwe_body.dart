@@ -1,8 +1,8 @@
 import 'package:book_store/constanceApp.dart';
 import 'package:book_store/core/utils/Styles.dart';
 import 'package:book_store/features/home/presentaion/views/widgets/Best-Seller-List-Viwe.dart';
-import 'package:book_store/features/home/presentaion/views/widgets/FeatureListViwe.dart';
 import 'package:book_store/features/home/presentaion/views/widgets/custem_app_bar.dart';
+import 'package:book_store/features/home/presentaion/views/widgets/featured_list_viwe_bloc_builder.dart';
 import 'package:flutter/material.dart';
 
 class HomeViweBody extends StatelessWidget {
@@ -19,7 +19,7 @@ class HomeViweBody extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               CustemAppBar(),
-              CustemListViwe(),
+              FeaturedListViweBlocBuilder(),
               SizedBox(height: 50),
               TextBestSeller(),
             ],
@@ -35,6 +35,9 @@ class HomeViweBody extends StatelessWidget {
     );
   }
 }
+
+
+
 
 class TextBestSeller extends StatelessWidget {
   const TextBestSeller({

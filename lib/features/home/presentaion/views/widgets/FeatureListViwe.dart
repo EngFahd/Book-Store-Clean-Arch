@@ -1,8 +1,8 @@
 import 'package:book_store/features/home/presentaion/views/widgets/custem_Listviwe_item.dart';
 import 'package:flutter/material.dart';
 
-class CustemListViwe extends StatelessWidget {
-  const CustemListViwe({super.key});
+class FeaturedListViwe extends StatelessWidget {
+  const FeaturedListViwe({super.key});
 
   @override
   Widget build(BuildContext context) {
