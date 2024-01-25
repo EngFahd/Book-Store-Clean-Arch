@@ -1,8 +1,22 @@
+import 'dart:ffi';
+
 import 'package:bloc/bloc.dart';
+import 'package:book_store/features/home/domain/entities/book_entities.dart';
+import 'package:book_store/features/home/domain/use-case/featch-feature-books-use-case.dart';
 import 'package:meta/meta.dart';
 
 part 'featured_box_state.dart';
 
 class FeaturedBoxCubit extends Cubit<FeaturedBoxState> {
-  FeaturedBoxCubit() : super(FeaturedBoxInitial());
+  final FeatchFeatureBooksUseCase featchFeatureBooksUseCase;
+
+  FeaturedBoxCubit(this.featchFeatureBooksUseCase)
+      : super(FeaturedBoxInitial());
+
+  Future <void> featchFeatsherdBox() async {
+    emit(FeaturedBoxLoading());
+    var result = await featchFeatureBooksUseCase.call();
+    result.fold((faliuer) => emit(FeaturedBoxFailer(faliuer.errMessage)),
+        (books) => emit(FeaturedBoxSucess(books)));
+  }
 }
