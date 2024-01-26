@@ -21,7 +21,7 @@ Future<Either<Failure, List<BookEntity>>> featchFeatureBooks({int pageNumber = 0
       if (books.isNotEmpty) {
         return right(books);
       }
-      books = await homeRemoteDataSource.featchFeatureBooks();
+      books = await homeRemoteDataSource.featchFeatureBooks(pageNumber: pageNumber);
       return right(books);
     } catch (e) {
       if (e is DioException) {
