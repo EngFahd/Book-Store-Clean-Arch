@@ -6,6 +6,7 @@ sealed class FeaturedBoxState {}
 final class FeaturedBoxInitial extends FeaturedBoxState {}
 
 final class FeaturedBoxLoading extends FeaturedBoxState {}
+final class FeaturedBoxLoadingPagination extends FeaturedBoxState {}
 
 final class FeaturedBoxSucess extends FeaturedBoxState {
   final List<BookEntity> books;

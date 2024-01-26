@@ -17,14 +17,19 @@ class _FeaturedListViweState extends State<FeaturedListViwe> {
   @override
   ScrollController scrollController = ScrollController();
   var nextPage = 1;
+  var isLoading = false;
   @override
   void scroolLisner(ScrollController scrollController, BuildContext context) {
-    scrollController.addListener(() {
+    scrollController.addListener(() async {
       if (scrollController.position.pixels >=
           scrollController.position.maxScrollExtent * 0.7) {
         // Trigger API request to fetch more books
-        BlocProvider.of<FeaturedBoxCubit>(context)
-            .featchFeatsherdBox(pageNumber: nextPage++);
+        if (!isLoading) {
+          isLoading = true;
+          await BlocProvider.of<FeaturedBoxCubit>(context)
+              .featchFeatsherdBox(pageNumber: nextPage++);
+          isLoading = false;
+        }
       }
     });
   }
@@ -33,6 +38,12 @@ class _FeaturedListViweState extends State<FeaturedListViwe> {
   void initState() {
     scroolLisner(scrollController, context);
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    scrollController.dispose();
+    super.dispose();
   }
 
   @override

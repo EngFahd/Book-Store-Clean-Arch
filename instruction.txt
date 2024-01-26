@@ -52,4 +52,6 @@ class FeatchFeatureBooksUseCase {
 
 12- manger cubit
 
-13- pagenatons => homeRepo > home repo implemnt > HomeRemoteDataSource > usecase
+13- pagination => homeRepo > home repo implemnt > HomeRemoteDataSource > usecase
+
+14 - cache data local HomeRemoteDataSource next page

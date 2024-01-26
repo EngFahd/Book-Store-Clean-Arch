@@ -17,7 +17,7 @@ class HomeRepoImplemnt extends HomeRepo {
 Future<Either<Failure, List<BookEntity>>> featchFeatureBooks({int pageNumber = 0}) async {
     try {
       List<BookEntity> books;
-      books = homeLocalDataSource.featchFeatureBooks();
+      books = homeLocalDataSource.featchFeatureBooks(pageNumper: pageNumber);
       if (books.isNotEmpty) {
         return right(books);
       }
