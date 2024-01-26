@@ -4,7 +4,7 @@ import 'package:hive_flutter/adapters.dart';
 
 abstract class HomeLocalDataSource {
   List<BookEntity> featchFeatureBooks({int pageNumper = 0});
-  List<BookEntity> fearchNewetBooks();
+  List<BookEntity> fearchNewetBooks({int pageNumper =0});
 }
 
 class HomeLocalDataSourceImpl extends HomeLocalDataSource {

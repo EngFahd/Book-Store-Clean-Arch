@@ -1,8 +1,6 @@
 import 'package:book_store/features/home/domain/entities/book_entities.dart';
-import 'package:book_store/features/home/presentaion/manger/featured_box_cubite/featured_box_cubit.dart';
 import 'package:book_store/features/home/presentaion/manger/newest_box/newest_box_cubit.dart';
 import 'package:book_store/features/home/presentaion/views/widgets/Best-Seller-Item.dart';
-import 'package:book_store/features/home/presentaion/views/widgets/custem_Listviwe_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -24,12 +22,12 @@ class _FeaturedListViweState extends State<NewestListViwe> {
   void scroolLisner(ScrollController scrollController, BuildContext context) {
     scrollController.addListener(() async {
       if (scrollController.position.pixels >=
-          scrollController.position.maxScrollExtent * 0.7) {
+          scrollController.position.maxScrollExtent * 0.5) {
         // Trigger API request to fetch more books
         if (!isLoading) {
           isLoading = true;
           await BlocProvider.of<NewestBoxCubit>(context)
-              .featchNewestBox( pageNumber: nextPage++);
+              .featchNewestBox(pageNumber: nextPage++);
           isLoading = false;
         }
       }
@@ -51,12 +49,15 @@ class _FeaturedListViweState extends State<NewestListViwe> {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-      shrinkWrap: true,
+      // shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
+      controller: scrollController,
       padding: EdgeInsets.zero,
-      itemCount: 10,
+      itemCount: widget.books.length,
       itemBuilder: (context, index) {
-        return  BestSellerItems(book: widget.books[index],);
+        return BestSellerItems(
+          book: widget.books[index],
+        );
       },
     );
   }

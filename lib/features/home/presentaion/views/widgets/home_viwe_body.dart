@@ -27,7 +27,7 @@ class HomeViweBody extends StatelessWidget {
             ],
           ),
         ),
-        SliverToBoxAdapter(
+        SliverFillRemaining(
           child: Padding(
             padding: EdgeInsets.symmetric(horizontal: 30),
             child: BestSellerListViwe(),

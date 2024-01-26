@@ -8,11 +8,19 @@ part 'newest_box_state.dart';
 class NewestBoxCubit extends Cubit<NewestBoxState> {
   NewestBoxCubit(this.featchNewestBooksUseCase) : super(NewestBoxInitial());
   final FeatchNewestBooksUseCase featchNewestBooksUseCase;
-  Future<void> featchNewestBox({int pageNumber =0}) async {
-    emit((NewestBoxLoaing()));
+  Future<void> featchNewestBox({int pageNumber = 0}) async {
+    if (pageNumber == 0 ) {
+      emit((NewestBoxLoaing()));
+    } else {
+      emit(NewestBoxPaggenationLoading());
+    }
     var result = await featchNewestBooksUseCase.call(pageNumber);
-    result.fold(
-        (failuer) => emit(NewestBoxFailuer(failuer.errMessage)),
-         (books) => emit(NewestBoxSuccess(books)));
+    result.fold((failuer) {
+      if (pageNumber == 0) {
+        emit(NewestBoxFailuer(failuer.errMessage));
+      } else {
+        emit(NewestBoxPaginationFuiler(failuer.errMessage));
+      }
+    }, (books) => emit(NewestBoxSuccess(books)));
   }
 }

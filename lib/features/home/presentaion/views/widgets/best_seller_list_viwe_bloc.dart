@@ -31,18 +31,18 @@ class _BestSellerListViweState extends State<BestSellerListViwe> {
               style: const TextStyle(color: Colors.white),
             ),
             duration:
-                const Duration(seconds: 3), // You can customize the duration
+                const Duration(seconds: 3), 
             action: SnackBarAction(
               label: 'Dismiss',
-              onPressed: () {
-                // Code to execute when the user taps the "Dismiss" action
-              },
+              onPressed: () {},
             ),
           ),
         );
       }
     }, builder: (context, state) {
-      if (state is NewestBoxSuccess ||state is NewestBoxPaggenationLoading ||state is NewestBoxPaginationFuiler) {
+      if (state is NewestBoxPaggenationLoading ||
+          state is NewestBoxSuccess ||
+          state is NewestBoxPaginationFuiler) {
         return NewestListViwe(
           books: books,
         );
