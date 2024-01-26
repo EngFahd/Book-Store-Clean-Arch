@@ -14,7 +14,7 @@ class HomeRepoImplemnt extends HomeRepo {
       {required this.homeRemoteDataSource, required this.homeLocalDataSource});
 
   @override
-  Future<Either<Failure, List<BookEntity>>> featchFeatureBooks() async {
+Future<Either<Failure, List<BookEntity>>> featchFeatureBooks({int pageNumber = 0}) async {
     try {
       List<BookEntity> books;
       books = homeLocalDataSource.featchFeatureBooks();

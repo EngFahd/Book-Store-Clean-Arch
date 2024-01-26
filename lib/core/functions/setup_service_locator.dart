@@ -6,7 +6,7 @@ import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 
 var getItN = GetIt.instance;
-void setupServiceAloocator() {
+void setup() {
   getItN.registerSingleton<ApiService>(
     ApiService(
       Dio(),

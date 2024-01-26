@@ -13,9 +13,9 @@ class FeaturedBoxCubit extends Cubit<FeaturedBoxState> {
   FeaturedBoxCubit(this.featchFeatureBooksUseCase)
       : super(FeaturedBoxInitial());
 
-  Future <void> featchFeatsherdBox() async {
+  Future <void> featchFeatsherdBox({int pageNumber =0 }) async {
     emit(FeaturedBoxLoading());
-    var result = await featchFeatureBooksUseCase.call();
+    var result = await featchFeatureBooksUseCase.call(pageNumber);
     result.fold((faliuer) => emit(FeaturedBoxFailer(faliuer.errMessage)),
         (books) => emit(FeaturedBoxSucess(books)));
   }
