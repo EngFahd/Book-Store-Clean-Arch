@@ -5,19 +5,21 @@ import 'package:book_store/features/home/domain/repo/home_repo_implemnt.dart';
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 
-var getIt = GetIt.instance;
+var getItN = GetIt.instance;
 void setupServiceAloocator() {
-  getIt.registerSingleton<ApiService>(
+  getItN.registerSingleton<ApiService>(
     ApiService(
       Dio(),
     ),
   );
-  getIt.registerSingleton<HomeRepoImplemnt>(
+  getItN.registerSingleton<HomeRepoImplemnt>(
     HomeRepoImplemnt(
-      homeRemoteDataSource: HomeRemoteDataSourceImpl(
-       ApiService(Dio())
-      ),
       homeLocalDataSource: HomeLocalDataSourceImpl(),
+      homeRemoteDataSource: HomeRemoteDataSourceImpl(
+        ApiService(
+          Dio(),
+        ),
+      ),
     ),
   );
 }

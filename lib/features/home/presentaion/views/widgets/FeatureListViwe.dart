@@ -1,17 +1,19 @@
+import 'package:book_store/features/home/domain/entities/book_entities.dart';
 import 'package:book_store/features/home/presentaion/views/widgets/custem_Listviwe_item.dart';
 import 'package:flutter/material.dart';
 
 class FeaturedListViwe extends StatelessWidget {
-  const FeaturedListViwe({super.key});
-
+  const FeaturedListViwe({super.key, required this.books});
+  final List<BookEntity> books;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       height: MediaQuery.of(context).size.height * 0.3,
       child: ListView.builder(
+        itemCount: books.length,
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) {
-          return const CustemListViweItem();
+          return  CustemListViweItem(image:books[index].image ?? "",);
         },
       ),
     );

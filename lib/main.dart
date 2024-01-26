@@ -1,5 +1,4 @@
 import 'package:book_store/constanceApp.dart';
-import 'package:book_store/core/functions/setup_service_locator.dart';
 import 'package:book_store/core/utils/api_service.dart';
 import 'package:book_store/core/utils/simple_bloc_opserver.dart';
 import 'package:book_store/features/home/data/data%20source/home_local_data_source.dart';
@@ -37,10 +36,16 @@ class BookApp extends StatelessWidget {
       providers: [
         BlocProvider(
           create: (context) => FeaturedBoxCubit(
-            FeatchFeatureBooksUseCase(HomeRepoImplemnt(
+            FeatchFeatureBooksUseCase(
+              HomeRepoImplemnt(
                 homeLocalDataSource: HomeLocalDataSourceImpl(),
-                homeRemoteDataSource:
-                    HomeRemoteDataSourceImpl(ApiService(Dio())))),
+                homeRemoteDataSource: HomeRemoteDataSourceImpl(
+                  ApiService(
+                    Dio(),
+                  ),
+                ),
+              ),
+            ),
           )..featchFeatsherdBox(),
         )
       ],

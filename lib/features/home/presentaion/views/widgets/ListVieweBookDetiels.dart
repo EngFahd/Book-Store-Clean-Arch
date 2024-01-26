@@ -12,7 +12,7 @@ class ListVieweBookDetiels extends StatelessWidget {
         padding: EdgeInsets.zero,
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) {
-          return const CustemListViweItem();
+          return const CustemListViweItem(image: "",);
         },
       ),
     );

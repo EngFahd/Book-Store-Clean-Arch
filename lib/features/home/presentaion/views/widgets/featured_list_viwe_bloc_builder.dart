@@ -1,4 +1,3 @@
-
 import 'package:book_store/features/home/presentaion/manger/featured_box_cubite/featured_box_cubit.dart';
 import 'package:book_store/features/home/presentaion/views/widgets/FeatureListViwe.dart';
 import 'package:flutter/material.dart';
@@ -14,7 +13,9 @@ class FeaturedListViweBlocBuilder extends StatelessWidget {
     return BlocBuilder<FeaturedBoxCubit, FeaturedBoxState>(
       builder: (context, state) {
         if (state is FeaturedBoxSucess) {
-          return const FeaturedListViwe();
+          return FeaturedListViwe(
+            books: state.books,
+          );
         } else if (state is FeaturedBoxFailer) {
           return Center(child: Text(state.message));
         }

@@ -26,7 +26,7 @@ class BookDetiledBody extends StatelessWidget {
                 const CustemBookDetielsAppBar(),
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: wideth * 0.25),
-                  child: const CustemBookImage(),
+                  child: const CustemBookImage(image: ""),
                 ),
                 const SizedBox(height: 30),
                 Text(
