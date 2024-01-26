@@ -8,9 +8,9 @@ part 'newest_box_state.dart';
 class NewestBoxCubit extends Cubit<NewestBoxState> {
   NewestBoxCubit(this.featchNewestBooksUseCase) : super(NewestBoxInitial());
   final FeatchNewestBooksUseCase featchNewestBooksUseCase;
-  Future<void> featchNewestBox() async {
+  Future<void> featchNewestBox({int pageNumber =0}) async {
     emit((NewestBoxLoaing()));
-    var result = await featchNewestBooksUseCase.call();
+    var result = await featchNewestBooksUseCase.call(pageNumber);
     result.fold(
         (failuer) => emit(NewestBoxFailuer(failuer.errMessage)),
          (books) => emit(NewestBoxSuccess(books)));

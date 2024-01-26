@@ -6,7 +6,9 @@ import 'package:book_store/features/home/data/data%20source/home_remote_data_sou
 import 'package:book_store/features/home/domain/entities/book_entities.dart';
 import 'package:book_store/features/home/domain/repo/home_repo_implemnt.dart';
 import 'package:book_store/features/home/domain/use-case/featch_feature_books_use_case.dart';
+import 'package:book_store/features/home/domain/use-case/featch_newst_books_use_case.dart';
 import 'package:book_store/features/home/presentaion/manger/featured_box_cubite/featured_box_cubit.dart';
+import 'package:book_store/features/home/presentaion/manger/newest_box/newest_box_cubit.dart';
 import 'package:book_store/features/home/presentaion/views/book-Detils-viwe.dart';
 import 'package:book_store/features/search-viwe/presentaion/views/Search-view.dart';
 import 'package:book_store/features/spashview/presntation/views/splashviwe.dart';
@@ -47,6 +49,20 @@ class BookApp extends StatelessWidget {
               ),
             ),
           )..featchFeatsherdBox(),
+        ),
+        BlocProvider(
+          create: (context) => NewestBoxCubit(
+            FeatchNewestBooksUseCase(
+              HomeRepoImplemnt(
+                homeLocalDataSource: HomeLocalDataSourceImpl(),
+                homeRemoteDataSource: HomeRemoteDataSourceImpl(
+                  ApiService(
+                    Dio(),
+                  ),
+                ),
+              ),
+            ),
+          )..featchNewestBox(),
         )
       ],
       child: GetMaterialApp(

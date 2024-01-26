@@ -32,14 +32,15 @@ Future<Either<Failure, List<BookEntity>>> featchFeatureBooks({int pageNumber = 0
   }
 
   @override
-  Future<Either<Failure, List<BookEntity>>> featchNewsteBooks() async {
+      Future<Either<Failure, List<BookEntity>>> featchNewsteBooks({int pageNumber = 0}) async {
+
     try {
       List<BookEntity> books;
       books = homeLocalDataSource.fearchNewetBooks();
       if (books.isNotEmpty) {
         return right(books);
       }
-      books = await homeRemoteDataSource.featchNewsteBooks();
+      books = await homeRemoteDataSource.featchNewsteBooks(pageNumber : pageNumber);
       return right(books);
     } catch (e) {
       if (e is DioException) {

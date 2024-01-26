@@ -44,7 +44,7 @@ class BookDetiledBody extends StatelessWidget {
                           fontWeight: FontWeight.w500)),
                 ),
                 const SizedBox(height: 14),
-                const CustemRateListViweItem(),
+                // const CustemRateListViweItem(book:  ),
                 const SizedBox(height: 25),
                 const ButtonBook(),
                 const Expanded(child: SizedBox(height: 25)),

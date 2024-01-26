@@ -56,7 +56,7 @@ class _FeaturedListViweBlocBuilderState
           return Center(child: Text(state.message));
         }
         return const Center(
-          child: FeaturedBooksListViewLoadingIndicator(),
+          child:FeaturedBooksListViewLoadingIndicator(),
         );
       },
     );

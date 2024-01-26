@@ -7,6 +7,14 @@ final class NewestBoxInitial extends NewestBoxState {}
 
 final class NewestBoxLoaing extends NewestBoxState {}
 
+final class NewestBoxPaggenationLoading extends NewestBoxState {}
+
+final class NewestBoxPaginationFuiler extends NewestBoxState {
+  final String errorMassages;
+
+  NewestBoxPaginationFuiler(this.errorMassages);
+}
+
 final class NewestBoxSuccess extends NewestBoxState {
   final List<BookEntity> books;
 

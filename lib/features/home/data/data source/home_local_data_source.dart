@@ -22,9 +22,14 @@ class HomeLocalDataSourceImpl extends HomeLocalDataSource {
   }
 
   @override
-  List<BookEntity> fearchNewetBooks() {
+  List<BookEntity> fearchNewetBooks({int pageNumper = 0}) {
     var box = Hive.box<BookEntity>(kNewestBox);
-
-    return box.values.toList();
+    int startIndex = pageNumper * 10;
+    int endIndex = (pageNumper + 1) * 10;
+    int length = box.values.length;
+    if (startIndex >= length || endIndex > length) {
+      return [];
+    }
+    return box.values.toList().sublist(startIndex,endIndex);
   }
 }

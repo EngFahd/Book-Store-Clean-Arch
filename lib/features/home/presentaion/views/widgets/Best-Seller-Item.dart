@@ -1,14 +1,16 @@
 import 'package:book_store/constanceApp.dart';
 import 'package:book_store/core/utils/Styles.dart';
 import 'package:book_store/core/utils/assets.dart';
+import 'package:book_store/features/home/domain/entities/book_entities.dart';
 import 'package:book_store/features/home/presentaion/views/book-Detils-viwe.dart';
 import 'package:book_store/features/home/presentaion/views/widgets/CustemRateListViweItem.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class BestSellerItems extends StatelessWidget {
-  const BestSellerItems({super.key});
-
+  const BestSellerItems({super.key, required this.book});
+  final BookEntity book;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -23,16 +25,12 @@ class BestSellerItems extends StatelessWidget {
               height: 125,
               child: AspectRatio(
                 aspectRatio: 2.5 / 4,
-                child: Container(
-                  // width: 100,
-                  // height: MediaQuery.of(context).size.height * 0.3,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(18),
-                      color: Colors.red,
-                      image: const DecorationImage(
-                          fit: BoxFit.fill,
-                          image: AssetImage(AssetsData.kTestim))),
-                ),
+                child: ClipRRect(
+                    borderRadius: BorderRadius.circular(16),
+                    child: CachedNetworkImage(
+                      imageUrl: book.image ?? "",
+                      fit: BoxFit.fill,
+                    )),
               ),
             ),
             const SizedBox(width: 30),
@@ -43,7 +41,7 @@ class BestSellerItems extends StatelessWidget {
                   SizedBox(
                     width: MediaQuery.of(context).size.width * .5,
                     child: Text(
-                      "Harry Potter and the Glopal of fire ",
+                      book.titel ?? " Unkwon",
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                       style: Style.textStyle20.copyWith(
@@ -52,8 +50,8 @@ class BestSellerItems extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 2),
-                  const Text(
-                    "J.K Rowling",
+                   Text(
+                    book.autherName ?? " Unkwon",
                     style: Style.textStyle14,
                   ),
                   const SizedBox(
@@ -62,12 +60,12 @@ class BestSellerItems extends StatelessWidget {
                   Row(
                     children: [
                       Text(
-                        r"19.99 $",
+                        "${book.prise} \$",
                         style: Style.textStyle20
                             .copyWith(fontWeight: FontWeight.bold),
                       ),
                       const Spacer(),
-                      const CustemRateListViweItem()
+                       CustemRateListViweItem(book: book,)
                     ],
                   )
                 ],

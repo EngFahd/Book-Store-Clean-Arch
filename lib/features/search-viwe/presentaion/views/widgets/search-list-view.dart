@@ -12,7 +12,7 @@ class Searchlistviwe extends StatelessWidget {
       padding: EdgeInsets.zero,
       itemCount: 10,
       itemBuilder: (context, index) {
-        return const BestSellerItems();
+        // return const BestSellerItems();
       },
     );
   }

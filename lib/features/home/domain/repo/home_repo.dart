@@ -7,5 +7,6 @@ import 'package:dartz/dartz.dart';
 abstract class HomeRepo {
   Future<Either<Failure, List<BookEntity>>> featchFeatureBooks(
       {int pageNumber = 0});
-  Future<Either<Failure, List<BookEntity>>> featchNewsteBooks();
+  Future<Either<Failure, List<BookEntity>>> featchNewsteBooks(
+      {int pageNumber = 0});
 }

@@ -7,14 +7,14 @@ import '../../../../core/use_case/use_case.dart';
 
 
 // https://www.udemy.com/course/deep-dive-into-clean-architecture-in-flutter-2022arabic/learn/lecture/37322230#questions
-class FeatchNewestBooksUseCase extends UseCase<List<BookEntity>,NoParam> {
+class FeatchNewestBooksUseCase extends UseCase<List<BookEntity>,int> {
   final HomeRepo homeRepo;
   FeatchNewestBooksUseCase(this.homeRepo);
   
   @override
-  Future<Either<Failure, List<BookEntity>>> call([NoParam? param]) async{
+  Future<Either<Failure, List<BookEntity>>> call([int param =0]) async{
 
-    return await homeRepo.featchNewsteBooks();
+    return await homeRepo.featchNewsteBooks(pageNumber:param );
   }
 
   }
