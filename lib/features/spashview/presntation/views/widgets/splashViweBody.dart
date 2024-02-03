@@ -4,6 +4,7 @@ import 'package:book_store/features/home/presentaion/views/home.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
+import 'package:go_router/go_router.dart';
 
 class SplashViweBody extends StatefulWidget {
   const SplashViweBody({super.key});
@@ -18,18 +19,19 @@ class _SplashViweBodyState extends State<SplashViweBody>
   late Animation<Offset> slidinganimation;
   @override
   void initState() {
-    super.initState();
     intSlideAnimations();
     addNavigatorAnimation();
+    super.initState();
 
     // dont forgite Slideanimation widget on the widget animated and give position
   }
 
 // =====================
   void addNavigatorAnimation() {
-    Future.delayed(const Duration(seconds: 2), () {
-      Get.to(() => const Home(),
-          transition: Transition.leftToRightWithFade, duration: kDuration);
+    Future.delayed(const Duration(seconds: 3), () {
+      // Get.to(() => const Home(),
+      //     transition: Transition.leftToRightWithFade, duration: kDuration);
+      GoRouter.of(context).push('/homeView');
     });
   }
 
@@ -47,9 +49,9 @@ class _SplashViweBodyState extends State<SplashViweBody>
 
   @override
   void dispose() {
-    // TODO: implement dispose
-    super.dispose();
+    
     animationController.dispose();
+    super.dispose();
   }
 
   @override

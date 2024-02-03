@@ -1,26 +1,20 @@
 import 'package:book_store/constanceApp.dart';
-import 'package:book_store/core/utils/api_service.dart';
+import 'package:book_store/core/functions/setup_service_locator.dart';
+import 'package:book_store/core/utils/AppRouter.dart';
 import 'package:book_store/core/utils/simple_bloc_opserver.dart';
-import 'package:book_store/features/home/data/data%20source/home_local_data_source.dart';
-import 'package:book_store/features/home/data/data%20source/home_remote_data_source.dart';
 import 'package:book_store/features/home/domain/entities/book_entities.dart';
 import 'package:book_store/features/home/domain/repo/home_repo_implemnt.dart';
 import 'package:book_store/features/home/domain/use-case/featch_feature_books_use_case.dart';
 import 'package:book_store/features/home/domain/use-case/featch_newst_books_use_case.dart';
 import 'package:book_store/features/home/presentaion/manger/featured_box_cubite/featured_box_cubit.dart';
 import 'package:book_store/features/home/presentaion/manger/newest_box/newest_box_cubit.dart';
-import 'package:book_store/features/home/presentaion/views/book-Detils-viwe.dart';
-import 'package:book_store/features/search-viwe/presentaion/views/Search-view.dart';
-import 'package:book_store/features/spashview/presntation/views/splashviwe.dart';
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hive_flutter/adapters.dart';
-// import 'package:go_router/go_router.dart';
 
 void main() async {
+  setup();
   await Hive.initFlutter();
   Hive.registerAdapter(BookEntityAdapter());
   await Hive.openBox<BookEntity>(kFeaturesBox);
@@ -38,45 +32,23 @@ class BookApp extends StatelessWidget {
       providers: [
         BlocProvider(
           create: (context) => FeaturedBoxCubit(
-            FeatchFeatureBooksUseCase(
-              HomeRepoImplemnt(
-                homeLocalDataSource: HomeLocalDataSourceImpl(),
-                homeRemoteDataSource: HomeRemoteDataSourceImpl(
-                  ApiService(
-                    Dio(),
-                  ),
-                ),
-              ),
-            ),
+            FeatchFeatureBooksUseCase(gitIt.get<HomeRepoImplemnt>()),
           )..featchFeatsherdBox(),
         ),
         BlocProvider(
           create: (context) => NewestBoxCubit(
-            FeatchNewestBooksUseCase(
-              HomeRepoImplemnt(
-                homeLocalDataSource: HomeLocalDataSourceImpl(),
-                homeRemoteDataSource: HomeRemoteDataSourceImpl(
-                  ApiService(
-                    Dio(),
-                  ),
-                ),
-              ),
-            ),
+            FeatchNewestBooksUseCase(gitIt.get<HomeRepoImplemnt>()),
           )..featchNewestBox(),
         )
       ],
-      child: GetMaterialApp(
-        routes: {
-          BookDetilesViwe.id: (context) => const BookDetilesViwe(),
-          SearchView.id: (context) => const SearchView(),
-        },
+      child: MaterialApp.router(
+        routerConfig: AppRouter.router,
         debugShowCheckedModeBanner: false,
         theme: ThemeData.dark().copyWith(
             scaffoldBackgroundColor: kMainColor,
             // =============== remmber this
             textTheme: GoogleFonts.montserratAlternatesTextTheme(
                 ThemeData.dark().textTheme)),
-        home: const SplashViwe(),
       ),
     );
   }

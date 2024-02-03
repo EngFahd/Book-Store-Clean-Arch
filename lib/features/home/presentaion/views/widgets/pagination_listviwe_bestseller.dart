@@ -22,7 +22,7 @@ class _FeaturedListViweState extends State<NewestListViwe> {
   void scroolLisner(ScrollController scrollController, BuildContext context) {
     scrollController.addListener(() async {
       if (scrollController.position.pixels >=
-          scrollController.position.maxScrollExtent * 0.5) {
+          scrollController.position.maxScrollExtent * 0.7) {
         // Trigger API request to fetch more books
         if (!isLoading) {
           isLoading = true;
@@ -50,7 +50,7 @@ class _FeaturedListViweState extends State<NewestListViwe> {
   Widget build(BuildContext context) {
     return ListView.builder(
       // shrinkWrap: true,
-      physics: const NeverScrollableScrollPhysics(),
+      // physics: const NeverScrollableScrollPhysics(),
       controller: scrollController,
       padding: EdgeInsets.zero,
       itemCount: widget.books.length,

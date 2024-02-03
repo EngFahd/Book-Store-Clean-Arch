@@ -1,5 +1,6 @@
 import 'package:book_store/core/utils/Styles.dart';
 import 'package:book_store/core/widgets/CustemButton.dart';
+import 'package:book_store/features/home/domain/entities/book_entities.dart';
 import 'package:book_store/features/home/presentaion/views/widgets/CustemBookDetielsAppBar.dart';
 import 'package:book_store/features/home/presentaion/views/widgets/CustemRateListViweItem.dart';
 import 'package:book_store/features/home/presentaion/views/widgets/FeatureListViwe.dart';
@@ -9,8 +10,8 @@ import 'package:book_store/features/home/presentaion/views/widgets/custem_Listvi
 import 'package:flutter/material.dart';
 
 class BookDetiledBody extends StatelessWidget {
-  const BookDetiledBody({super.key});
-
+  const BookDetiledBody({super.key, });
+  
   @override
   Widget build(BuildContext context) {
     var wideth = MediaQuery.of(context).size.width;
@@ -57,7 +58,7 @@ class BookDetiledBody extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 10),
-                const ListVieweBookDetiels(),
+                // const ListVieweBookDetiels(book: ),
                 const SizedBox(height: 10),
               ],
             ),

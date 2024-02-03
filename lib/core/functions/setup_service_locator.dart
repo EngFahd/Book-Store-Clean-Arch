@@ -5,21 +5,21 @@ import 'package:book_store/features/home/domain/repo/home_repo_implemnt.dart';
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 
-var getItN = GetIt.instance;
+final gitIt = GetIt.instance;
 void setup() {
-  getItN.registerSingleton<ApiService>(
+  gitIt.registerSingleton<ApiService>(
     ApiService(
       Dio(),
     ),
   );
-  getItN.registerSingleton<HomeRepoImplemnt>(
+  gitIt.registerSingleton<HomeRepoImplemnt>(
     HomeRepoImplemnt(
       homeLocalDataSource: HomeLocalDataSourceImpl(),
       homeRemoteDataSource: HomeRemoteDataSourceImpl(
-        ApiService(
-          Dio(),
-        ),
+        gitIt.get<ApiService>(),
       ),
     ),
   );
 }
+
+

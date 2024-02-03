@@ -1,7 +1,9 @@
+import 'package:book_store/core/utils/AppRouter.dart';
 import 'package:book_store/core/utils/assets.dart';
 import 'package:book_store/features/search-viwe/presentaion/views/Search-view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:go_router/go_router.dart';
 
 class CustemAppBar extends StatelessWidget {
   const CustemAppBar({
@@ -21,7 +23,7 @@ class CustemAppBar extends StatelessWidget {
           const Spacer(),
           IconButton(
               onPressed: () {
-                Navigator.pushNamed(context, SearchView.id);
+                GoRouter.of(context).push(kSearchViwe);
               },
               icon: const Icon(
                 Icons.search,

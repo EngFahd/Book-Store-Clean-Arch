@@ -55,7 +55,7 @@ class _FeaturedListViweState extends State<FeaturedListViwe> {
         itemCount: widget.books.length,
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) {
-          return CustemListViweItem(image: widget.books[index].image ?? "");
+          return CustemFeaturedListViweItem(book: widget.books[index]);
         },
       ),
     );

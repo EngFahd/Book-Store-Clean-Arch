@@ -1,7 +1,7 @@
 import 'package:book_store/constanceApp.dart';
 import 'package:book_store/core/utils/Styles.dart';
 import 'package:book_store/features/home/domain/entities/book_entities.dart';
-import 'package:book_store/features/home/presentaion/views/book-Detils-viwe.dart';
+import 'package:book_store/features/book%20detiles/presntaion/view/book-Detils-viwe.dart';
 import 'package:book_store/features/home/presentaion/views/widgets/CustemRateListViweItem.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
@@ -13,7 +13,6 @@ class BestSellerItems extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.pushNamed(context, BookDetilesViwe.id);
       },
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 10),
