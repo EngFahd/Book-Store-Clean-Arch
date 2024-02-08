@@ -1,6 +1,6 @@
 import 'package:book_store/constanceApp.dart';
 import 'package:book_store/core/functions/setup_service_locator.dart';
-import 'package:book_store/core/utils/AppRouter.dart';
+import 'package:book_store/core/utils/app_router.dart';
 import 'package:book_store/core/utils/simple_bloc_opserver.dart';
 import 'package:book_store/features/home/domain/entities/book_entities.dart';
 import 'package:book_store/features/home/domain/repo/home_repo_implemnt.dart';

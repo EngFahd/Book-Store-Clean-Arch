@@ -1,4 +1,4 @@
-import 'package:book_store/core/utils/AppRouter.dart';
+import 'package:book_store/core/utils/app_router.dart';
 import 'package:book_store/core/utils/assets.dart';
 import 'package:book_store/features/search-viwe/presentaion/views/Search-view.dart';
 import 'package:flutter/material.dart';

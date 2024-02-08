@@ -50,7 +50,7 @@ class _FeaturedListViweState extends State<NewestListViwe> {
   Widget build(BuildContext context) {
     return ListView.builder(
       // shrinkWrap: true,
-      // physics: const NeverScrollableScrollPhysics(),
+      physics: const ClampingScrollPhysics(),
       controller: scrollController,
       padding: EdgeInsets.zero,
       itemCount: widget.books.length,

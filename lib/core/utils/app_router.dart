@@ -1,6 +1,6 @@
 import 'package:book_store/core/functions/setup_service_locator.dart';
 import 'package:book_store/features/home/domain/entities/book_entities.dart';
-import 'package:book_store/features/book%20detiles/presntaion/view/book-Detils-viwe.dart';
+import 'package:book_store/features/book%20detiles/presntaion/view/book_detils_viwe.dart';
 import 'package:book_store/features/home/presentaion/views/home.dart';
 import 'package:book_store/features/search-viwe/presentaion/views/Search-view.dart';
 import 'package:book_store/features/spashview/presntation/views/splashviwe.dart';

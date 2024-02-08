@@ -1,4 +1,4 @@
-import 'package:book_store/core/utils/AppRouter.dart';
+import 'package:book_store/core/utils/app_router.dart';
 import 'package:book_store/features/home/domain/entities/book_entities.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';

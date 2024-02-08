@@ -1,10 +1,5 @@
 import 'package:book_store/core/utils/Styles.dart';
-import 'package:book_store/core/widgets/CustemButton.dart';
-import 'package:book_store/features/home/domain/entities/book_entities.dart';
 import 'package:book_store/features/home/presentaion/views/widgets/CustemBookDetielsAppBar.dart';
-import 'package:book_store/features/home/presentaion/views/widgets/CustemRateListViweItem.dart';
-import 'package:book_store/features/home/presentaion/views/widgets/FeatureListViwe.dart';
-import 'package:book_store/features/home/presentaion/views/widgets/ListVieweBookDetiels.dart';
 import 'package:book_store/features/home/presentaion/views/widgets/buttonBook.dart';
 import 'package:book_store/features/home/presentaion/views/widgets/custem_Listviwe_item.dart';
 import 'package:flutter/material.dart';
